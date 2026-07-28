@@ -1,4 +1,4 @@
-A LAST PORTFOLIO TEMPLATE YOU CAN COPY FOR YOURSELF .
+A LAST PORTFOLIO TEMPLATE(BY ME) THAT YOU CAN COPY FOR YOURSELF .
 A modern, responsive, and developer-friendly portfolio website that anyone can clone, customize, and deploy within minutes.
 
 Whether you're a student, freelancer, or software engineer, this template provides a clean foundation to showcase your projects, skills, and experience without starting from scratch.
