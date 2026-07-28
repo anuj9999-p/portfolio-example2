@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Anuj Shukla — Full-Stack &amp; AI Engineer</title>
+<meta name="description" content="Anuj Shukla — Full-Stack AI Engineer. MERN stack, AI-integrated apps, VIT Computer Science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+img{max-width:100%;display:block}
+:root{
+  --bg:#0b0b0d;
+  --bg-soft:#111114;
+  --surface:#17171b;
+  --surface-2:#1e1e24;
+  --border:#2a2a31;
+  --text:#f4f2ea;
+  --text-soft:#a3a3ad;
+  --text-faint:#5c5c66;
+  --accent:#ff5c39;
+  --accent-2:#7c8cff;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.16,.84,.32,1);
+  --wrap:1240px;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--accent);color:#0b0b0d}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 2rem}
+@media(max-width:640px){.wrap{padding:0 1.25rem}}
+a{color:inherit;text-decoration:none}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.5rem;margin-bottom:1rem}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--accent)}
+.big-title{font-family:var(--font-display);font-weight:400;line-height:.92;letter-spacing:.01em;text-transform:uppercase}
+
+/* ============ NAV ============ */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.4rem 2rem;transition:background .3s var(--ease),backdrop-filter .3s var(--ease),padding .3s var(--ease)}
+header.nav.scrolled{background:#0b0b0dcc;backdrop-filter:blur(14px);padding:1rem 2rem;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--wrap);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo-mark{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.02em;color:var(--text)}
+.logo-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:2.4rem;list-style:none}
+.nav-links a{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-soft);transition:color .25s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:1.4rem}
+.nav-cta{font-family:var(--font-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--bg);background:var(--accent);padding:.6rem 1.2rem;border-radius:2px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px #ff5c3966}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+.burger span{width:22px;height:2px;background:var(--text)}
+@media(max-width:840px){.nav-links{display:none}.nav-cta{display:none}.burger{display:flex}}
+
+.mobile-menu{position:fixed;inset:0;z-index:1300;background:#0b0b0df7;backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--font-display);font-size:2.4rem;text-transform:uppercase;letter-spacing:.02em;opacity:0;transform:translateY(16px);transition:all .5s var(--ease)}
+.mobile-menu.open a{opacity:1;transform:none}
+.mobile-menu .close-btn{position:absolute;top:1.5rem;right:1.75rem;background:none;border:none;color:var(--text);font-size:1.6rem;cursor:pointer;padding:.5rem}
+
+/* ============ HERO ============ */
+#home{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:6rem;overflow:hidden}
+.hero-glow{position:absolute;top:-10%;right:-10%;width:60vw;height:60vw;max-width:800px;max-height:800px;border-radius:50%;background:radial-gradient(circle, #ff5c3922 0%, transparent 70%);pointer-events:none;transition:transform .3s ease-out}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 30%, black 10%, transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:2}
+.hero-name{font-size:clamp(4rem,15vw,11rem)}
+.hero-name .line{display:block;overflow:hidden}
+.hero-name .line span{display:inline-block;transform:translateY(110%);transition:transform .9s var(--ease)}
+.hero-name .line:nth-child(2) span{color:var(--accent);transition-delay:.08s}
+.hero-loaded .hero-name .line span{transform:translateY(0)}
+.hero-sub{font-family:var(--font-mono);font-size:.95rem;color:var(--text-soft);max-width:480px;margin:1.6rem 0 2.2rem;opacity:0;transform:translateY(12px);transition:all .8s var(--ease) .5s}
+.hero-loaded .hero-sub{opacity:1;transform:none}
+.hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem;opacity:0;transform:translateY(12px);transition:all .8s var(--ease) .65s}
+.hero-loaded .hero-row{opacity:1;transform:none}
+.chip-building{display:flex;align-items:center;gap:.7rem;font-family:var(--font-mono);font-size:.76rem;color:var(--text)}
+.chip-building .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #ff5c3955}50%{box-shadow:0 0 0 6px #ff5c3900}}
+.chip-building small{color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em}
+.chip-building strong{font-weight:600}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;padding:.85rem 1.5rem;border-radius:2px;display:inline-flex;align-items:center;gap:.6rem;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),color .25s var(--ease);cursor:pointer}
+.btn-primary{background:var(--accent);color:#0b0b0d;font-weight:600}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 28px -10px #ff5c3970}
+.btn-ghost{border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+.scroll-cue{position:absolute;bottom:2.2rem;left:2rem;display:flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);z-index:2}
+.scroll-cue .ln{width:1px;height:34px;background:var(--text-faint);position:relative;overflow:hidden}
+.scroll-cue .ln::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--accent);animation:scrollLine 1.8s infinite}
+@keyframes scrollLine{0%{top:-100%}100%{top:100%}}
+@media(max-width:640px){.scroll-cue{display:none}}
+
+/* ============ MANIFESTO ============ */
+#manifesto{padding:8rem 0;border-top:1px solid var(--border)}
+@media(max-width:768px){#manifesto{padding:5rem 0}}
+.manifesto-text{font-family:var(--font-display);font-size:clamp(2rem,5.6vw,4rem);line-height:1.08;text-transform:uppercase;max-width:920px}
+.manifesto-text b{color:var(--accent);font-weight:400}
+.manifesto-cap{font-family:var(--font-mono);font-size:.76rem;color:var(--text-faint);margin-top:2rem;text-transform:uppercase;letter-spacing:.06em}
+
+/* ============ HORIZONTAL GALLERY ============ */
+#moments{padding-bottom:6rem}
+.moments-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.moments-track{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;cursor:grab;scrollbar-width:none}
+.moments-track::-webkit-scrollbar{display:none}
+.moments-track.dragging{cursor:grabbing;scroll-snap-type:none}
+.moment-card{flex:0 0 auto;width:280px;height:380px;border-radius:6px;position:relative;overflow:hidden;scroll-snap-align:start;border:1px solid var(--border)}
+.moment-card img{width:100%;height:100%;object-fit:cover;object-position:top center;user-select:none;pointer-events:none}
+.moment-card.tile{background:linear-gradient(155deg,var(--tile-a),var(--tile-b))}
+.moment-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%, #000 100%);pointer-events:none}
+.moment-cap{position:absolute;left:1.1rem;bottom:1rem;z-index:2;font-family:var(--font-mono);font-size:.72rem;color:#fff;text-transform:uppercase;letter-spacing:.05em}
+.moment-cap b{display:block;font-family:var(--font-body);font-size:.95rem;font-weight:600;text-transform:none;letter-spacing:0;margin-top:.2rem}
+
+/* ============ SPLIT TILES ============ */
+#split{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:820px){#split{grid-template-columns:1fr}}
+.split-tile{position:relative;min-height:60vh;display:flex;align-items:flex-end;padding:3rem;overflow:hidden;isolation:isolate}
+.split-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:-2;transition:transform .7s var(--ease);filter:grayscale(.3) brightness(.65)}
+.split-tile::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, #0b0b0de6 100%);z-index:-1}
+.split-tile:hover img{transform:scale(1.06)}
+.split-label{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4.5rem);color:#fff;letter-spacing:.01em}
+.split-label span{color:var(--accent)}
+.split-sub{font-family:var(--font-mono);font-size:.82rem;color:#d8d8dc;max-width:340px;margin-top:.6rem}
+.split-arrow{position:absolute;top:2rem;right:2rem;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .3s var(--ease),background .3s var(--ease)}
+.split-tile:hover .split-arrow{transform:rotate(45deg);background:var(--accent);border-color:var(--accent)}
+
+/* ============ MILESTONES ============ */
+#work{padding:8rem 0}
+@media(max-width:768px){#work{padding:5rem 0}}
+.section-head{margin-bottom:3rem;max-width:640px}
+.section-head h2{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.4rem);text-transform:uppercase;line-height:1.05}
+.section-head h2 em{font-style:normal;color:var(--accent)}
+.section-head p{color:var(--text-soft);margin-top:.9rem}
+.milestone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+@media(max-width:900px){.milestone-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.milestone-grid{grid-template-columns:1fr}}
+.m-card{background:var(--bg);padding:2rem 1.8rem;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:background .35s var(--ease)}
+.m-card:hover{background:var(--surface)}
+.m-card .m-year{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);text-transform:uppercase}
+.m-card h3{font-family:var(--font-display);font-size:1.6rem;text-transform:uppercase;margin:1.4rem 0 .7rem;letter-spacing:.01em}
+.m-card p{color:var(--text-soft);font-size:.86rem;line-height:1.65;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .4s var(--ease)}
+.m-card:hover p{max-height:200px;opacity:1}
+.m-card .m-link{font-family:var(--font-mono);font-size:.72rem;color:var(--accent-2);margin-top:.8rem;display:inline-block}
+
+/* ============ CTA BANNER ============ */
+#cta{padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
+.cta-inner h2{font-family:var(--font-display);font-size:clamp(2rem,4.6vw,3.2rem);text-transform:uppercase;max-width:600px;line-height:1.05}
+.cta-inner h2 span{color:var(--accent)}
+
+/* ============ MARQUEE ============ */
+#stack{padding:3.5rem 0;overflow:hidden;border-bottom:1px solid var(--border)}
+.marquee{display:flex;white-space:nowrap;animation:marquee 26s linear infinite}
+.marquee span{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);text-transform:uppercase;color:transparent;-webkit-text-stroke:1px var(--text-faint);padding:0 2rem;display:inline-flex;align-items:center;gap:2rem}
+.marquee span::after{content:'/';color:var(--accent);-webkit-text-stroke:0}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ============ ABOUT ============ */
+#about{padding:8rem 0}
+@media(max-width:768px){#about{padding:5rem 0}}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:start}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.5rem}}
+.about-photo{position:relative;border-radius:6px;overflow:hidden}
+.about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;filter:grayscale(.15)}
+.about-text p{color:var(--text-soft);margin-bottom:1.1rem;font-size:1rem;line-height:1.85}
+.about-text strong{color:var(--text)}
+.fact-strip{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.8rem 0 2.2rem}
+.fact-chip{font-family:var(--font-mono);font-size:.74rem;color:var(--text-soft);border:1px solid var(--border);padding:.55rem .95rem;border-radius:2px}
+.fact-chip b{color:var(--accent)}
+
+/* ============ CONNECT GRID ============ */
+#connect{padding:0 0 8rem}
+.connect-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+@media(max-width:900px){.connect-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.connect-grid{grid-template-columns:repeat(2,1fr)}}
+.connect-tile{background:var(--bg);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;transition:background .3s var(--ease)}
+.connect-tile:hover{background:var(--accent);color:#0b0b0d}
+.connect-tile svg{width:22px;height:22px}
+.connect-tile span{font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em}
+
+/* ============ FOOTER ============ */
+footer{padding:6rem 0 2.5rem;border-top:1px solid var(--border)}
+.footer-statement{font-family:var(--font-display);font-size:clamp(2.4rem,7vw,5.5rem);text-transform:uppercase;line-height:.98;margin-bottom:3rem}
+.footer-statement span{color:var(--accent)}
+.footer-cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.footer-col h4{font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:1rem}
+.footer-col a{display:block;font-size:.88rem;color:var(--text-soft);margin-bottom:.6rem;transition:color .25s var(--ease)}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;padding-top:1.6rem;font-family:var(--font-mono);font-size:.72rem;color:var(--text-faint)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="nav" id="navBar">
+  <div class="nav-inner">
+    <a href="#home" class="logo-mark">AS<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="mailto:amanujshukla2006@gmail.com" class="nav-cta">Hire Me</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">✕</button>
+  <a href="#work" data-close>Work</a>
+  <a href="#about" data-close>About</a>
+  <a href="#connect" data-close>Connect</a>
+  <a href="mailto:amanujshukla2006@gmail.com" data-close>Hire Me</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="wrap hero-inner" id="heroInner">
+    <span class="eyebrow">Full-Stack &amp; AI Engineer — since 2023</span>
+    <h1 class="big-title hero-name">
+      <span class="line"><span>ANUJ</span></span>
+      <span class="line"><span>SHUKLA</span></span>
+    </h1>
+    <p class="hero-sub">Computer Science student at VIT who turns coffee and curiosity into scalable web apps, AI-powered tools, and the occasional browser game.</p>
+    <div class="hero-row">
+      <div class="chip-building"><span class="dot"></span><small>Currently building</small><strong>AI Interview SaaS Platform</strong></div>
+    </div>
+    <div class="hero-btns" style="margin-top:1.8rem">
+      <a href="#work" class="btn btn-primary">View the work</a>
+      <a href="mailto:amanujshukla2006@gmail.com" class="btn btn-ghost">Say hello</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="ln"></span>Scroll</div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section id="manifesto">
+  <div class="wrap">
+    <p class="eyebrow reveal">Note from Anuj</p>
+    <p class="manifesto-text reveal"><b>Shipping</b> fast, breaking things on purpose, and turning caffeine into software that actually <b>works.</b></p>
+    <p class="manifesto-cap reveal">Vellore, 2026</p>
+  </div>
+</section>
+
+<!-- ============ MOMENTS (horizontal scroll) ============ -->
+<section id="moments">
+  <div class="wrap">
+    <div class="moments-head reveal">
+      <div>
+        <span class="eyebrow">Build Log</span>
+        <h2 class="big-title" style="font-size:clamp(1.8rem,4vw,2.6rem)">A Few Moments</h2>
+      </div>
+      <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--text-faint);text-transform:uppercase">drag to explore →</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="moments-track reveal" id="momentsTrack">
+      <div class="moment-card"><img src="assets/about.webp" alt="Anuj Shukla"><span class="moment-cap">VIT Campus, 2025<b>Just another semester</b></span></div>
+      <div class="moment-card tile" style="--tile-a:#ff5c39;--tile-b:#7a2410"><span class="moment-cap">Hackathon Win, 2025<b>Two trophies, one deadline</b></span></div>
+      <div class="moment-card tile" style="--tile-a:#7c8cff;--tile-b:#1c2461"><span class="moment-cap">CodeForgeAI, 2026<b>Shipped &amp; live</b></span></div>
+      <div class="moment-card"><img src="assets/profile.jpg" alt="Anuj Shukla"><span class="moment-cap">Portfolio Shoot, 2026<b>Cleaned up for once</b></span></div>
+      <div class="moment-card tile" style="--tile-a:#2fbf71;--tile-b:#0d3f28"><span class="moment-cap">AI SaaS Deploy, 2026<b>Production, no downtime</b></span></div>
+      <div class="moment-card tile" style="--tile-a:#3a3a42;--tile-b:#111114"><span class="moment-cap">Debugging, 2am<b>Every night, basically</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT: IN CODE / OUT OF CODE ============ -->
+<section id="split">
+  <a href="#work" class="split-tile">
+    <img src="assets/profile.jpg" alt="Anuj Shukla">
+    <div class="split-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div>
+      <div class="split-label">IN <span>CODE</span></div>
+      <div class="split-sub">Projects, stack, and shipped products — from AI SaaS to distributed systems.</div>
+    </div>
+  </a>
+  <a href="#about" class="split-tile">
+    <img src="assets/about.webp" alt="Anuj Shukla">
+    <div class="split-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div>
+      <div class="split-label">OUT OF <span>CODE</span></div>
+      <div class="split-sub">Campus life at VIT, hackathons, and the occasional browser game.</div>
+    </div>
+  </a>
+</section>
+
+<!-- ============ MILESTONES / WORK ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Milestone Wall</span>
+      <h2>Things I've <em>shipped.</em></h2>
+      <p>From production SaaS platforms to distributed systems — hover a card for the story.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0">
+    <div class="milestone-grid reveal">
+      <div class="m-card">
+        <span class="m-year">2026 · SaaS Platform</span>
+        <h3>AI Interview SaaS</h3>
+        <p>Microservices platform where local LLMs via Ollama generate and evaluate interview answers, Whisper transcribes in real time, and Monaco powers an in-browser code editor.</p>
+      </div>
+      <div class="m-card">
+        <span class="m-year">2025–26 · AI SaaS</span>
+        <h3>UGC Ads Generator</h3>
+        <p>Full-stack AI SaaS turning a product brief into UGC-style video ad scripts using the Gemini API — Clerk auth, Sentry monitoring, Neon Postgres on a Hostinger VPS.</p>
+      </div>
+      <div class="m-card">
+        <span class="m-year">2025 · Distributed Systems</span>
+        <h3>LimiterOps</h3>
+        <p>A distributed rate limiter using a Redis-backed sliding-window algorithm so every node in a cluster enforces the same limit without stepping on each other.</p>
+      </div>
+      <div class="m-card">
+        <span class="m-year">2026 · AI Tool · Live</span>
+        <h3>CodeForgeAI</h3>
+        <p>An AI coding companion that reads your prompt, generates working snippets, and explains the "why" — a lightweight alternative to switching tabs mid-flow.</p>
+        <a class="m-link" href="https://code-forge-ai-indol.vercel.app/" target="_blank" rel="noopener">Try it live →</a>
+      </div>
+      <div class="m-card">
+        <span class="m-year">2025 · Security</span>
+        <h3>Packet Inspector</h3>
+        <p>A lightweight packet analyzer that inspects traffic at the payload level to flag anomalies in real time, visualized through a live dashboard.</p>
+      </div>
+      <div class="m-card">
+        <span class="m-year">2024–25 · Competitions</span>
+        <h3>2+ Hackathons Won</h3>
+        <p>Shipped working products against the clock, alongside great teammates, across multiple hackathons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section id="cta">
+  <div class="wrap cta-inner reveal">
+    <h2>Open to full-time roles, <span>internships</span> &amp; freelance.</h2>
+    <a href="mailto:amanujshukla2006@gmail.com" class="btn btn-primary">Let's talk →</a>
+  </div>
+</section>
+
+<!-- ============ STACK MARQUEE ============ -->
+<section id="stack">
+  <div class="marquee">
+    <span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span><span>PostgreSQL</span><span>FastAPI</span><span>Docker</span><span>Redis</span><span>Gemini API</span><span>Ollama</span><span>Whisper</span>
+    <span>React</span><span>Next.js</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span><span>PostgreSQL</span><span>FastAPI</span><span>Docker</span><span>Redis</span><span>Gemini API</span><span>Ollama</span><span>Whisper</span>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal"><img src="assets/about.webp" alt="Anuj Shukla"></div>
+    <div class="about-text reveal">
+      <span class="eyebrow">About</span>
+      <h2 class="big-title" style="font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:1.4rem">Hi, I'm Anuj.</h2>
+      <p>I'm a <strong>Computer Science student at Vellore Institute of Technology</strong> with a passion for software development and problem-solving. I build full-stack applications with the MERN stack and layer them with AI wherever it makes a product feel less like software and more like magic.</p>
+      <p>I believe in learning by building — real projects, real bugs, real 2am debugging sessions. My interests span web development, backend engineering, distributed systems, and crafting experiences people actually enjoy using.</p>
+      <p>Right now I'm sharpening my DSA, exploring agentic AI, and getting ready for software engineering roles — while still finding time to ship a browser game or two, just for fun.</p>
+      <div class="fact-strip">
+        <span class="fact-chip"><b>5+</b> Projects Shipped</span>
+        <span class="fact-chip"><b>2+</b> Hackathons Won</span>
+        <span class="fact-chip"><b>15+</b> Technologies</span>
+        <span class="fact-chip"><b>VIT</b> Computer Science</span>
+      </div>
+      <a href="mailto:amanujshukla2006@gmail.com" class="btn btn-ghost">amanujshukla2006@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONNECT ============ -->
+<section id="connect">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Connect</span>
+      <h2>Find me <em>online.</em></h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0">
+    <div class="connect-grid reveal">
+      <a class="connect-tile" href="https://github.com/anuj9999-p" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="connect-tile" href="https://www.linkedin.com/in/anuj-shukla-07b233370/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a class="connect-tile" href="https://leetcode.com/u/ANUJSHUKLA999/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+        <span>LeetCode</span>
+      </a>
+      <a class="connect-tile" href="https://www.geeksforgeeks.org/profile/amanujshuhuav" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.45 14.315c-.143.28-.334.532-.565.745a3.691 3.691 0 0 1-1.104.695 4.51 4.51 0 0 1-3.116-.016 5.965 5.965 0 0 1-2.415-1.979 6.055 6.055 0 0 1-2.415 1.979 4.51 4.51 0 0 1-3.116.016 3.69 3.69 0 0 1-1.104-.695 3.139 3.139 0 0 1-.565-.745A6.153 6.153 0 0 0 12 17.826a6.153 6.153 0 0 0 4.945-3.511zM12 6.174a6.155 6.155 0 0 0-4.945 3.511c.143-.28.334-.532.565-.745.313-.29.676-.516 1.104-.695a4.51 4.51 0 0 1 3.116.016A5.964 5.964 0 0 1 14.255 10.24a5.965 5.965 0 0 1 2.415-1.979 4.51 4.51 0 0 1 3.116-.016c.428.179.792.405 1.104.695.231.213.422.465.565.745A6.155 6.155 0 0 0 12 6.174zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        <span>GfG</span>
+      </a>
+      <a class="connect-tile" href="mailto:amanujshukla2006@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        <span>Email</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-statement reveal">Always shipping <span>the unexpected.</span></div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <a href="#home">Home</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#connect">Connect</a>
+      </div>
+      <div class="footer-col">
+        <h4>Elsewhere</h4>
+        <a href="https://github.com/anuj9999-p" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/anuj-shukla-07b233370/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://leetcode.com/u/ANUJSHUKLA999/" target="_blank" rel="noopener">LeetCode</a>
+        <a href="https://www.instagram.com/i_dontlikeanuj/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:amanujshukla2006@gmail.com">amanujshukla2006@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Anuj Shukla. All rights reserved.</span>
+      <span>Designed &amp; built by Anuj, with help from a lot of coffee.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* nav scroll state */
+const navBar = document.getElementById('navBar');
+window.addEventListener('scroll', () => {
+  navBar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* hero load-in */
+requestAnimationFrame(() => {
+  setTimeout(() => document.getElementById('heroInner').classList.add('hero-loaded'), 100);
+});
+
+/* hero glow parallax on mouse move */
+const heroGlow = document.getElementById('heroGlow');
+document.getElementById('home').addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 40;
+  const y = (e.clientY / window.innerHeight - 0.5) * 40;
+  heroGlow.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* mobile menu */
+const burgerBtn = document.getElementById('burgerBtn');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+/* reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* draggable horizontal moments track */
+const track = document.getElementById('momentsTrack');
+let isDown = false, startX, scrollLeft;
+track.addEventListener('mousedown', (e) => {
+  isDown = true; track.classList.add('dragging');
+  startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+});
+window.addEventListener('mouseup', () => { isDown = false; track.classList.remove('dragging'); });
+track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('dragging'); });
+track.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  track.scrollLeft = scrollLeft - (x - startX) * 1.4;
+});
+</script>
+</body>
+</html>
